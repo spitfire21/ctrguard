@@ -1,0 +1,164 @@
+{
+ "matches": [],
+ "source": {
+  "type": "image",
+  "target": {
+   "userInput": "gcr.io/distroless/static-debian11",
+   "imageID": "sha256:ea9e561cec2cee59c2aebb636d409979077f19c8098fc74aee984e24befe95b9",
+   "manifestDigest": "sha256:018d6b043e0a79c1b1155b1cbf102eb7c6429839e5db6524a36064cc655f2642",
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "tags": [
+    "gcr.io/distroless/static-debian11:latest"
+   ],
+   "imageSize": 2444695,
+   "layers": [
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:54ad2ec71039b74f7e82f020a92a8c2ca45f16a51930d539b56973a18b8ffe8d",
+     "size": 269951
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:6fbdf253bbc2490dcfede5bdb58ca0db63ee8aff565f6ea9f918f3bce9e2d5aa",
+     "size": 29379
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:accc3e6808c014d5e77f405d1ae74dabde9c9fc0337c9b7693d3a4f52aecfc69",
+     "size": 1925056
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:ff5700ec54186528cbae40f54c24b1a34fb7c01527beaa1232868c16e2353f52",
+     "size": 149
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:d52f02c6501c9c4410568f0bf6ff30d30d8290f57794c308fe36ea78393afac2",
+     "size": 64
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:e624a5370eca2b8266e74d179326e2a8767d361db14d13edd9fb57e408731784",
+     "size": 0
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:1a73b54f556b477f0a8b939d13c504a3b4f4db71f7a09c63afbc10acb3de5849",
+     "size": 497
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:d2d7ec0f6756eb51cf1602c6f8ac4dd811d3d052661142e0110357bf0b581457",
+     "size": 346
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:4cb10dd2545bd173858450b80853b850e49608260f1a0789e0d0b39edf12f500",
+     "size": 219253
+    }
+   ],
+   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjoxMjY5LCJkaWdlc3QiOiJzaGEyNTY6ZWE5ZTU2MWNlYzJjZWU1OWMyYWViYjYzNmQ0MDk5NzkwNzdmMTljODA5OGZjNzRhZWU5ODRlMjRiZWZlOTViOSJ9LCJsYXllcnMiOlt7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjozMjc2ODAsImRpZ2VzdCI6InNoYTI1Njo1NGFkMmVjNzEwMzliNzRmN2U4MmYwMjBhOTJhOGMyY2E0NWYxNmE1MTkzMGQ1MzliNTY5NzNhMThiOGZmZThkIn0seyJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmltYWdlLnJvb3Rmcy5kaWZmLnRhci5nemlwIiwic2l6ZSI6NTEyMDAsImRpZ2VzdCI6InNoYTI1Njo2ZmJkZjI1M2JiYzI0OTBkY2ZlZGU1YmRiNThjYTBkYjYzZWU4YWZmNTY1ZjZlYTlmOTE4ZjNiY2U5ZTJkNWFhIn0seyJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmltYWdlLnJvb3Rmcy5kaWZmLnRhci5nemlwIiwic2l6ZSI6MzIwNTEyMCwiZGlnZXN0Ijoic2hhMjU2OmFjY2MzZTY4MDhjMDE0ZDVlNzdmNDA1ZDFhZTc0ZGFiZGU5YzlmYzAzMzdjOWI3NjkzZDNhNGY1MmFlY2ZjNjkifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoxMDI0MCwiZGlnZXN0Ijoic2hhMjU2OmZmNTcwMGVjNTQxODY1MjhjYmFlNDBmNTRjMjRiMWEzNGZiN2MwMTUyN2JlYWExMjMyODY4YzE2ZTIzNTNmNTIifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoxMDI0MCwiZGlnZXN0Ijoic2hhMjU2OmQ1MmYwMmM2NTAxYzljNDQxMDU2OGYwYmY2ZmYzMGQzMGQ4MjkwZjU3Nzk0YzMwOGZlMzZlYTc4MzkzYWZhYzIifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoxMDI0MCwiZGlnZXN0Ijoic2hhMjU2OmU2MjRhNTM3MGVjYTJiODI2NmU3NGQxNzkzMjZlMmE4NzY3ZDM2MWRiMTRkMTNlZGQ5ZmI1N2U0MDg3MzE3ODQifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoxMDI0MCwiZGlnZXN0Ijoic2hhMjU2OjFhNzNiNTRmNTU2YjQ3N2YwYThiOTM5ZDEzYzUwNGEzYjRmNGRiNzFmN2EwOWM2M2FmYmMxMGFjYjNkZTU4NDkifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoxMDI0MCwiZGlnZXN0Ijoic2hhMjU2OmQyZDdlYzBmNjc1NmViNTFjZjE2MDJjNmY4YWM0ZGQ4MTFkM2QwNTI2NjExNDJlMDExMDM1N2JmMGI1ODE0NTcifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoyMjUyODAsImRpZ2VzdCI6InNoYTI1Njo0Y2IxMGRkMjU0NWJkMTczODU4NDUwYjgwODUzYjg1MGU0OTYwODI2MGYxYTA3ODllMGQwYjM5ZWRmMTJmNTAwIn1dfQ==",
+   "config": "eyJhcmNoaXRlY3R1cmUiOiJhbWQ2NCIsImNyZWF0ZWQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiIsImhpc3RvcnkiOlt7ImNyZWF0ZWQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9LHsiY3JlYXRlZCI6IjAwMDEtMDEtMDFUMDA6MDA6MDBaIn0seyJjcmVhdGVkIjoiMDAwMS0wMS0wMVQwMDowMDowMFoifSx7ImNyZWF0ZWQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9LHsiY3JlYXRlZCI6IjAwMDEtMDEtMDFUMDA6MDA6MDBaIn0seyJjcmVhdGVkIjoiMDAwMS0wMS0wMVQwMDowMDowMFoifSx7ImNyZWF0ZWQiOiIwMDAxLTAxLTAxVDAwOjAwOjAwWiJ9LHsiY3JlYXRlZCI6IjAwMDEtMDEtMDFUMDA6MDA6MDBaIn0seyJjcmVhdGVkIjoiMDAwMS0wMS0wMVQwMDowMDowMFoifV0sIm9zIjoibGludXgiLCJyb290ZnMiOnsidHlwZSI6ImxheWVycyIsImRpZmZfaWRzIjpbInNoYTI1Njo1NGFkMmVjNzEwMzliNzRmN2U4MmYwMjBhOTJhOGMyY2E0NWYxNmE1MTkzMGQ1MzliNTY5NzNhMThiOGZmZThkIiwic2hhMjU2OjZmYmRmMjUzYmJjMjQ5MGRjZmVkZTViZGI1OGNhMGRiNjNlZThhZmY1NjVmNmVhOWY5MThmM2JjZTllMmQ1YWEiLCJzaGEyNTY6YWNjYzNlNjgwOGMwMTRkNWU3N2Y0MDVkMWFlNzRkYWJkZTljOWZjMDMzN2M5Yjc2OTNkM2E0ZjUyYWVjZmM2OSIsInNoYTI1NjpmZjU3MDBlYzU0MTg2NTI4Y2JhZTQwZjU0YzI0YjFhMzRmYjdjMDE1MjdiZWFhMTIzMjg2OGMxNmUyMzUzZjUyIiwic2hhMjU2OmQ1MmYwMmM2NTAxYzljNDQxMDU2OGYwYmY2ZmYzMGQzMGQ4MjkwZjU3Nzk0YzMwOGZlMzZlYTc4MzkzYWZhYzIiLCJzaGEyNTY6ZTYyNGE1MzcwZWNhMmI4MjY2ZTc0ZDE3OTMyNmUyYTg3NjdkMzYxZGIxNGQxM2VkZDlmYjU3ZTQwODczMTc4NCIsInNoYTI1NjoxYTczYjU0ZjU1NmI0NzdmMGE4YjkzOWQxM2M1MDRhM2I0ZjRkYjcxZjdhMDljNjNhZmJjMTBhY2IzZGU1ODQ5Iiwic2hhMjU2OmQyZDdlYzBmNjc1NmViNTFjZjE2MDJjNmY4YWM0ZGQ4MTFkM2QwNTI2NjExNDJlMDExMDM1N2JmMGI1ODE0NTciLCJzaGEyNTY6NGNiMTBkZDI1NDViZDE3Mzg1ODQ1MGI4MDg1M2I4NTBlNDk2MDgyNjBmMWEwNzg5ZTBkMGIzOWVkZjEyZjUwMCJdfSwiY29uZmlnIjp7IkVudiI6WyJTU0xfQ0VSVF9GSUxFPS9ldGMvc3NsL2NlcnRzL2NhLWNlcnRpZmljYXRlcy5jcnQiLCJQQVRIPS91c3IvbG9jYWwvc2JpbjovdXNyL2xvY2FsL2JpbjovdXNyL3NiaW46L3Vzci9iaW46L3NiaW46L2JpbiJdLCJVc2VyIjoiMCIsIldvcmtpbmdEaXIiOiIvIn19",
+   "repoDigests": [
+    "gcr.io/distroless/static-debian11@sha256:9be3fcc6abeaf985b5ecce59451acbcbb15e7be39472320c538d0d55a0834edc"
+   ],
+   "architecture": "amd64",
+   "os": "linux"
+  }
+ },
+ "distro": {
+  "name": "debian",
+  "version": "11",
+  "idLike": []
+ },
+ "descriptor": {
+  "name": "grype",
+  "version": "0.74.5",
+  "configuration": {
+   "output": [
+    "json"
+   ],
+   "file": "",
+   "distro": "",
+   "add-cpes-if-none": false,
+   "output-template-file": "",
+   "check-for-app-update": true,
+   "only-fixed": false,
+   "only-notfixed": false,
+   "ignore-wontfix": "",
+   "platform": "",
+   "search": {
+    "scope": "squashed",
+    "unindexed-archives": false,
+    "indexed-archives": true
+   },
+   "ignore": null,
+   "exclude": [],
+   "db": {
+    "cache-dir": "/root/.cache/grype/db",
+    "update-url": "https://toolbox-data.anchore.io/grype/databases/listing.json",
+    "ca-cert": "",
+    "auto-update": true,
+    "validate-by-hash-on-start": false,
+    "validate-age": true,
+    "max-allowed-built-age": 432000000000000
+   },
+   "externalSources": {
+    "enable": false,
+    "maven": {
+     "searchUpstreamBySha1": true,
+     "baseUrl": "https://search.maven.org/solrsearch/select"
+    }
+   },
+   "match": {
+    "java": {
+     "using-cpes": false
+    },
+    "dotnet": {
+     "using-cpes": false
+    },
+    "golang": {
+     "using-cpes": false,
+     "always-use-cpe-for-stdlib": true
+    },
+    "javascript": {
+     "using-cpes": false
+    },
+    "python": {
+     "using-cpes": false
+    },
+    "ruby": {
+     "using-cpes": false
+    },
+    "rust": {
+     "using-cpes": false
+    },
+    "stock": {
+     "using-cpes": true
+    }
+   },
+   "fail-on-severity": "",
+   "registry": {
+    "insecure-skip-tls-verify": false,
+    "insecure-use-http": false,
+    "auth": null,
+    "ca-cert": ""
+   },
+   "show-suppressed": false,
+   "by-cve": false,
+   "name": "",
+   "default-image-pull-source": "",
+   "vex-documents": [],
+   "vex-add": []
+  },
+  "db": {
+   "built": "2024-02-10T01:21:52Z",
+   "schemaVersion": 5,
+   "location": "/root/.cache/grype/db/5",
+   "checksum": "sha256:8afc83bec5b73d91c7eaa82234138a51f94941fdcadc88c9dd8676ab35f0fbfa",
+   "error": null
+  },
+  "timestamp": "2024-02-09T21:54:14.307576803-07:00"
+ }
+}

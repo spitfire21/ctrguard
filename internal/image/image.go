@@ -1,7 +1,8 @@
-package internal
+package image
 
 import (
 	"context"
+	"sort"
 
 	"github.com/docker/docker/client"
 	"github.com/google/martian/log"
@@ -24,5 +25,18 @@ func NumOfLayers(ctx context.Context, image string) int {
 }
 
 func CompareImageLayers(layers1, layers2 []string) bool {
+
+	if len(layers1) != len(layers2) {
+		return false
+	}
+
+	sort.Strings(layers1)
+	sort.Strings(layers2)
+	for i := 0; i < len(layers1); i++ {
+		if layers1[i] != layers2[i] {
+			return false
+		}
+	}
+
 	return true
 }
