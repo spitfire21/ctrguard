@@ -7,8 +7,8 @@ import (
 )
 
 type Layer struct {
-	id       string `json:"id"`
-	severity string `json:"severity"`
+	Id       string `json:"id"`
+	Severity string `json:"severity"`
 }
 
 type ImageScanInfo struct {
@@ -17,57 +17,57 @@ type ImageScanInfo struct {
 }
 
 type Metrics struct {
-	baseScore           float64 `json:"baseScore"`
-	impactScore         float64 `json:"impactScore"`
-	exploitabilityScore float64 `json:"exploitabilityScore"`
+	BaseScore           float64 `json:"baseScore"`
+	ImpactScore         float64 `json:"impactScore"`
+	ExploitabilityScore float64 `json:"exploitabilityScore"`
 }
 
 type Cvss struct {
-	source         string      `json:"source"`
-	type_          string      `json:"type"`
-	version        string      `json:"version"`
-	vector         string      `json:"vector"`
-	metrics        Metrics     `json:"metrics"`
-	vendorMetadata interface{} `json:"vendorMetadata"`
+	Source         string      `json:"source"`
+	Type_          string      `json:"type"`
+	Version        string      `json:"version"`
+	Vector         string      `json:"vector"`
+	Metrics        Metrics     `json:"metrics"`
+	VendorMetadata interface{} `json:"vendorMetadata"`
 }
 type Fix struct {
-	versions []string `json:"versions"`
-	state    string   `json:"state"`
+	Versions []string `json:"versions"`
+	State    string   `json:"state"`
 }
 type Vulnerability struct {
-	id          string   `json:"id"`
-	dataSource  string   `json:"dataSource"`
-	namespace   string   `json:"namespace"`
-	severity    string   `json:"severity"`
-	urls        []string `json:"urls"`
-	description string   `json:"description"`
-	cvss        []string `json:"cvss"`
-	advisories  []string `json:"advisories"`
+	Id          string   `json:"id"`
+	DataSource  string   `json:"dataSource"`
+	Namespace   string   `json:"namespace"`
+	Severity    string   `json:"severity"`
+	Urls        []string `json:"urls"`
+	Description string   `json:"description"`
+	Cvss        []string `json:"cvss"`
+	Advisories  []string `json:"advisories"`
 }
 type Package struct {
-	name    string `json:"name"`
-	version string `json:"version"`
+	Name    string `json:"name"`
+	Version string `json:"version"`
 }
 type MatchDetails struct {
-	type_      string      `json:"type"`
-	matcher    string      `json:"matcher"`
-	searchedBy interface{} `json:"searchedBy"`
-	found      interface{} `json:"found"`
-	namespace  string      `json:"namespace"`
-	package_   Package     `json:"package"`
+	Type_      string      `json:"type"`
+	Matcher    string      `json:"matcher"`
+	SearchedBy interface{} `json:"searchedBy"`
+	Found      interface{} `json:"found"`
+	Namespace  string      `json:"namespace"`
+	Package_   Package     `json:"package"`
 }
 
 type ArtifactLocation struct {
-	path    string `json:"path"`
-	layerID string `json:"layerId"`
+	Path    string `json:"path"`
+	LayerID string `json:"layerId"`
 }
 
 type Artifact struct {
-	id       string           `json:"id"`
-	name     string           `json:"name"`
-	version  string           `json:"version"`
-	type_    string           `json:"type"`
-	location ArtifactLocation `json:"location"`
+	Id       string           `json:"id"`
+	Name     string           `json:"name"`
+	Version  string           `json:"version"`
+	Type_    string           `json:"type"`
+	Location ArtifactLocation `json:"location"`
 }
 
 type Match struct {
@@ -83,6 +83,40 @@ type Match struct {
 type ScanInfo struct {
 	Matches []ImageScanInfo `json:"matches"`
 }
+
+type Target struct {
+	Type_          string   `json:"type"`
+	UserInput      string   `json:"userInput"`
+	ImageID        string   `json:"imageId"`
+	ManifestDigest string   `json:"manifestDigest"`
+	MediaType      string   `json:"mediaType"`
+	Tags           []string `json:"tags"`
+	ImageSize      int64    `json:"imageSize"`
+	Layers         []Layer  `json:"layers"`
+	Manifest       string   `json:"manifest"`
+	Config         string   `json:"config"`
+	RepoDigests    []string `json:"repoDigests"`
+	Architecture   string   `json:"architecture"`
+	Os             string   `json:"os"`
+	Labels         []string `json:"labels"`
+}
+
+type Distro struct {
+	Name    string `json:"name"`
+	Version string `json:"version"`
+	IdLike  string `json:"idLike"`
+}
+
+type Source struct {
+	Type_  string `json:"type"`
+	Distro Distro `json:"distro"`
+}
+
+type GrypeFormat struct {
+	Matches []Match `json:"matches"`
+	Source
+}
+
 type Entry struct {
 	Match Match
 	Error error
@@ -96,6 +130,13 @@ func NewJSONStream() Stream {
 	return Stream{
 		stream: make(chan Entry),
 	}
+}
+
+// Watch watches JSON streams. Each stream entry will either have an error or a
+// User object. Client code does not need to explicitly exit after catching an
+// error as the `Start` method will close the channel automatically.
+func (s Stream) Watch() <-chan Entry {
+	return s.stream
 }
 
 func (s Stream) LoadScan(path string) {
