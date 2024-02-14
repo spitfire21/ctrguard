@@ -3,127 +3,273 @@ package scan
 import (
 	"encoding/json"
 	"fmt"
+	"io"
+	"log"
 	"os"
+	"time"
 )
 
-type Layer struct {
-	Id       string `json:"id"`
-	Severity string `json:"severity"`
-}
-
-type ImageScanInfo struct {
-	Name   string  `json:"name"`
-	Layers []Layer `json:"layers"`
-}
-
-type Metrics struct {
-	BaseScore           float64 `json:"baseScore"`
-	ImpactScore         float64 `json:"impactScore"`
-	ExploitabilityScore float64 `json:"exploitabilityScore"`
-}
-
-type Cvss struct {
-	Source         string      `json:"source"`
-	Type_          string      `json:"type"`
-	Version        string      `json:"version"`
-	Vector         string      `json:"vector"`
-	Metrics        Metrics     `json:"metrics"`
-	VendorMetadata interface{} `json:"vendorMetadata"`
+type GrypeFormat struct {
+	Matches    []Matches  `json:"matches"`
+	Source     Source     `json:"source"`
+	Distro     Distro     `json:"distro"`
+	Descriptor Descriptor `json:"descriptor"`
 }
 type Fix struct {
-	Versions []string `json:"versions"`
-	State    string   `json:"state"`
+	Versions []any  `json:"versions"`
+	State    string `json:"state"`
 }
 type Vulnerability struct {
-	Id          string   `json:"id"`
+	ID          string   `json:"id"`
 	DataSource  string   `json:"dataSource"`
 	Namespace   string   `json:"namespace"`
 	Severity    string   `json:"severity"`
 	Urls        []string `json:"urls"`
 	Description string   `json:"description"`
-	Cvss        []string `json:"cvss"`
-	Advisories  []string `json:"advisories"`
+	Cvss        []any    `json:"cvss"`
+	Fix         Fix      `json:"fix"`
+	Advisories  []any    `json:"advisories"`
+}
+type Metrics struct {
+	BaseScore           float64 `json:"baseScore"`
+	ExploitabilityScore float64 `json:"exploitabilityScore"`
+	ImpactScore         float64 `json:"impactScore"`
+}
+type VendorMetadata struct {
+}
+type Cvss struct {
+	Source         string         `json:"source"`
+	Type           string         `json:"type"`
+	Version        string         `json:"version"`
+	Vector         string         `json:"vector"`
+	Metrics        Metrics        `json:"metrics"`
+	VendorMetadata VendorMetadata `json:"vendorMetadata"`
+}
+type RelatedVulnerabilities struct {
+	ID          string   `json:"id"`
+	DataSource  string   `json:"dataSource"`
+	Namespace   string   `json:"namespace"`
+	Severity    string   `json:"severity"`
+	Urls        []string `json:"urls"`
+	Description string   `json:"description"`
+	Cvss        []Cvss   `json:"cvss"`
+}
+type Distro0 struct {
+	Type    string `json:"type"`
+	Version string `json:"version"`
 }
 type Package struct {
 	Name    string `json:"name"`
 	Version string `json:"version"`
 }
+type SearchedBy struct {
+	Distro    Distro  `json:"distro"`
+	Namespace string  `json:"namespace"`
+	Package   Package `json:"package"`
+}
+type Found struct {
+	VersionConstraint string `json:"versionConstraint"`
+	VulnerabilityID   string `json:"vulnerabilityID"`
+}
 type MatchDetails struct {
-	Type_      string      `json:"type"`
-	Matcher    string      `json:"matcher"`
-	SearchedBy interface{} `json:"searchedBy"`
-	Found      interface{} `json:"found"`
-	Namespace  string      `json:"namespace"`
-	Package_   Package     `json:"package"`
+	Type       string     `json:"type"`
+	Matcher    string     `json:"matcher"`
+	SearchedBy SearchedBy `json:"searchedBy"`
+	Found      Found      `json:"found"`
 }
-
-type ArtifactLocation struct {
+type Locations struct {
 	Path    string `json:"path"`
-	LayerID string `json:"layerId"`
+	LayerID string `json:"layerID"`
 }
-
 type Artifact struct {
-	Id       string           `json:"id"`
-	Name     string           `json:"name"`
-	Version  string           `json:"version"`
-	Type_    string           `json:"type"`
-	Location ArtifactLocation `json:"location"`
+	ID        string      `json:"id"`
+	Name      string      `json:"name"`
+	Version   string      `json:"version"`
+	Type      string      `json:"type"`
+	Locations []Locations `json:"locations"`
+	Language  string      `json:"language"`
+	Licenses  []string    `json:"licenses"`
+	Cpes      []string    `json:"cpes"`
+	Purl      string      `json:"purl"`
+	Upstreams []any       `json:"upstreams"`
 }
-
-type Match struct {
-	Vulnerability          Vulnerability   `json:"vulnerability"`
-	RelatedVulnerabilities []Vulnerability `json:"relatedVulnerabilities"`
-	Description            string          `json:"description"`
-	Cvss                   Cvss            `json:"cvss"`
-	Fix                    Fix             `json:"fix"`
-	MatchDetails           MatchDetails    `json:"matchDetails"`
-	Artifact               Artifact        `json:"artifact"`
+type Vulnerability0 struct {
+	ID         string   `json:"id"`
+	DataSource string   `json:"dataSource"`
+	Namespace  string   `json:"namespace"`
+	Severity   string   `json:"severity"`
+	Urls       []string `json:"urls"`
+	Cvss       []any    `json:"cvss"`
+	Fix        Fix      `json:"fix"`
+	Advisories []any    `json:"advisories"`
 }
-
-type ScanInfo struct {
-	Matches []ImageScanInfo `json:"matches"`
+type Matches struct {
+	Vulnerability          Vulnerability            `json:"vulnerability,omitempty"`
+	RelatedVulnerabilities []RelatedVulnerabilities `json:"relatedVulnerabilities"`
+	MatchDetails           []MatchDetails           `json:"matchDetails"`
+	Artifact               Artifact                 `json:"artifact"`
+	//Vulnerability0         Vulnerability0           `json:"vulnerability,omitempty"`
 }
-
+type Layers struct {
+	MediaType string `json:"mediaType"`
+	Digest    string `json:"digest"`
+	Size      int    `json:"size"`
+}
 type Target struct {
-	Type_          string   `json:"type"`
 	UserInput      string   `json:"userInput"`
-	ImageID        string   `json:"imageId"`
+	ImageID        string   `json:"imageID"`
 	ManifestDigest string   `json:"manifestDigest"`
 	MediaType      string   `json:"mediaType"`
 	Tags           []string `json:"tags"`
-	ImageSize      int64    `json:"imageSize"`
-	Layers         []Layer  `json:"layers"`
+	ImageSize      int      `json:"imageSize"`
+	Layers         []Layers `json:"layers"`
 	Manifest       string   `json:"manifest"`
 	Config         string   `json:"config"`
 	RepoDigests    []string `json:"repoDigests"`
 	Architecture   string   `json:"architecture"`
 	Os             string   `json:"os"`
-	Labels         []string `json:"labels"`
 }
-
+type Source struct {
+	Type   string `json:"type"`
+	Target Target `json:"target"`
+}
 type Distro struct {
 	Name    string `json:"name"`
 	Version string `json:"version"`
-	IdLike  string `json:"idLike"`
+	IDLike  []any  `json:"idLike"`
 }
-
-type Source struct {
-	Type_  string `json:"type"`
-	Distro Distro `json:"distro"`
+type Search struct {
+	Scope             string `json:"scope"`
+	UnindexedArchives bool   `json:"unindexed-archives"`
+	IndexedArchives   bool   `json:"indexed-archives"`
 }
-
-type GrypeFormat struct {
-	Matches []Match `json:"matches"`
-	Source
+type Db0 struct {
+	CacheDir              string `json:"cache-dir"`
+	UpdateURL             string `json:"update-url"`
+	CaCert                string `json:"ca-cert"`
+	AutoUpdate            bool   `json:"auto-update"`
+	ValidateByHashOnStart bool   `json:"validate-by-hash-on-start"`
+	ValidateAge           bool   `json:"validate-age"`
+	MaxAllowedBuiltAge    int64  `json:"max-allowed-built-age"`
+}
+type Maven struct {
+	SearchUpstreamBySha1 bool   `json:"searchUpstreamBySha1"`
+	BaseURL              string `json:"baseUrl"`
+}
+type ExternalSources struct {
+	Enable bool  `json:"enable"`
+	Maven  Maven `json:"maven"`
+}
+type Java struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Dotnet struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Golang struct {
+	UsingCpes             bool `json:"using-cpes"`
+	AlwaysUseCpeForStdlib bool `json:"always-use-cpe-for-stdlib"`
+}
+type Javascript struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Python struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Ruby struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Rust struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Stock struct {
+	UsingCpes bool `json:"using-cpes"`
+}
+type Match struct {
+	Java       Java       `json:"java"`
+	Dotnet     Dotnet     `json:"dotnet"`
+	Golang     Golang     `json:"golang"`
+	Javascript Javascript `json:"javascript"`
+	Python     Python     `json:"python"`
+	Ruby       Ruby       `json:"ruby"`
+	Rust       Rust       `json:"rust"`
+	Stock      Stock      `json:"stock"`
+}
+type Registry struct {
+	InsecureSkipTLSVerify bool   `json:"insecure-skip-tls-verify"`
+	InsecureUseHTTP       bool   `json:"insecure-use-http"`
+	Auth                  any    `json:"auth"`
+	CaCert                string `json:"ca-cert"`
+}
+type Configuration struct {
+	Output                 []string        `json:"output"`
+	File                   string          `json:"file"`
+	Distro                 string          `json:"distro"`
+	AddCpesIfNone          bool            `json:"add-cpes-if-none"`
+	OutputTemplateFile     string          `json:"output-template-file"`
+	CheckForAppUpdate      bool            `json:"check-for-app-update"`
+	OnlyFixed              bool            `json:"only-fixed"`
+	OnlyNotfixed           bool            `json:"only-notfixed"`
+	IgnoreWontfix          string          `json:"ignore-wontfix"`
+	Platform               string          `json:"platform"`
+	Search                 Search          `json:"search"`
+	Ignore                 any             `json:"ignore"`
+	Exclude                []any           `json:"exclude"`
+	Db                     Db              `json:"db"`
+	ExternalSources        ExternalSources `json:"externalSources"`
+	Match                  Match           `json:"match"`
+	FailOnSeverity         string          `json:"fail-on-severity"`
+	Registry               Registry        `json:"registry"`
+	ShowSuppressed         bool            `json:"show-suppressed"`
+	ByCve                  bool            `json:"by-cve"`
+	Name                   string          `json:"name"`
+	DefaultImagePullSource string          `json:"default-image-pull-source"`
+	VexDocuments           []any           `json:"vex-documents"`
+	VexAdd                 []any           `json:"vex-add"`
+}
+type Db struct {
+	Built         time.Time `json:"built"`
+	SchemaVersion int       `json:"schemaVersion"`
+	Location      string    `json:"location"`
+	Checksum      string    `json:"checksum"`
+	Error         any       `json:"error"`
+}
+type Descriptor struct {
+	Name          string        `json:"name"`
+	Version       string        `json:"version"`
+	Configuration Configuration `json:"configuration"`
+	Db            Db            `json:"db"`
+	Timestamp     string        `json:"timestamp"`
 }
 
 type Entry struct {
-	Match Match
+	Grype GrypeFormat
 	Error error
 }
 
 type Stream struct {
 	stream chan Entry
+}
+
+func UnmarshalScan(path string) GrypeFormat {
+	file, err := os.Open(path)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	defer file.Close()
+
+	data, err := io.ReadAll(file)
+	if err != nil {
+		log.Fatal(err)
+	}
+	var result GrypeFormat
+	err = json.Unmarshal(data, &result)
+	if err != nil {
+		log.Fatal(err)
+	}
+	return result
 }
 
 func NewJSONStream() Stream {
@@ -139,6 +285,8 @@ func (s Stream) Watch() <-chan Entry {
 	return s.stream
 }
 
+// LoadScan loads a JSON stream
+// TODO currently broken, need to investigate why
 func (s Stream) LoadScan(path string) {
 	defer close(s.stream)
 
@@ -161,12 +309,12 @@ func (s Stream) LoadScan(path string) {
 	// Read file content as long as there is something.
 	i := 1
 	for decoder.More() {
-		var match Match
-		if err := decoder.Decode(&match); err != nil {
+		var grype GrypeFormat
+		if err := decoder.Decode(&grype); err != nil {
 			s.stream <- Entry{Error: fmt.Errorf("decode line %d: %w", i, err)}
 			return
 		}
-		s.stream <- Entry{Match: match}
+		s.stream <- Entry{Grype: grype}
 
 		i++
 	}
