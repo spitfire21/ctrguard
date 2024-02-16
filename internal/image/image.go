@@ -8,6 +8,11 @@ import (
 	"github.com/google/martian/log"
 )
 
+type LayerVuln struct {
+	LayerID         string
+	Vulnerabilities map[string]int
+}
+
 func NumOfLayers(ctx context.Context, image string) int {
 	apiClient, err := client.NewClientWithOpts(client.FromEnv)
 	if err != nil {

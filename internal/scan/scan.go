@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"strings"
 	"time"
 )
 
@@ -324,4 +325,20 @@ func (s Stream) LoadScan(path string) {
 		s.stream <- Entry{Error: fmt.Errorf("decode closing delimiter: %w", err)}
 		return
 	}
+}
+
+func GetNumberOfSeveritiies(grype *GrypeFormat) map[string]int {
+	severities := map[string]int{
+		"CRITICAL": 0,
+		"HIGH":     0,
+		"MEDIUM":   0,
+		"LOW":      0,
+		"INFO":     0,
+	}
+
+	for _, entry := range grype.Matches {
+		severities[strings.ToUpper(entry.Vulnerability.Severity)]++
+	}
+
+	return severities
 }
