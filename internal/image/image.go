@@ -40,3 +40,14 @@ func CompareImageLayers(layers1, layers2 []string) bool {
 
 	return true
 }
+func CompareNumberOfLayers(image1 []string, image2 []string) int {
+	// Math.Abs takes a float and returns a float
+	// I will just calculate the difference manually
+	// Absolute difference calculation
+	x := len(image1)
+	y := len(image2)
+	if x < y {
+		return y - x
+	}
+	return x - y
+}

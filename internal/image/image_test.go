@@ -39,3 +39,12 @@ func TestCompareImageLayers(t *testing.T) {
 		t.Errorf("Expected false, got %t", compare)
 	}
 }
+
+func TestCompareNumImageLayers(t *testing.T) {
+
+	layers1 := []string{"1", "2", "3"}
+	layers2 := []string{"2", "3", "1"}
+	if compare := CompareNumberOfLayers(layers1, layers2); compare != 0 {
+		t.Errorf("Expected 0, got %d", compare)
+	}
+}
