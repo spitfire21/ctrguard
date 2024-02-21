@@ -327,7 +327,13 @@ func (s Stream) LoadScan(path string) {
 	}
 }
 
-func GetNumberOfSeveritiies(grype *GrypeFormat) map[string]int {
+var layerVulnerabilties = map[string]SBOMFindings{}
+
+func setLayerVulnerabilities(findings *SBOMFindings, layer string) {
+	layerVulnerabilties[layer] = *findings
+}
+
+func GetNumberOfSeverities(grype *GrypeFormat) map[string]int {
 	severities := map[string]int{
 		"CRITICAL": 0,
 		"HIGH":     0,
@@ -341,4 +347,86 @@ func GetNumberOfSeveritiies(grype *GrypeFormat) map[string]int {
 	}
 
 	return severities
+}
+
+func BuildSBOMFindings(grype *GrypeFormat) *SBOMFindings {
+	findings := &SBOMFindings{}
+
+	for _, entry := range grype.Matches {
+		switch entry.Vulnerability.Severity {
+		case "CRITICAL":
+			findings.NumCritical++
+		case "HIGH":
+			findings.NumHigh++
+		case "MEDIUM":
+			findings.NumMedium++
+		case "LOW":
+			findings.NumLow++
+		case "INFO":
+			findings.NumInfo++
+
+		}
+
+	}
+
+	return findings
+}
+func BuildSBOMFindingsPerID(grype *GrypeFormat) *map[string]SBOMFindings {
+
+	findings := map[string]SBOMFindings{}
+
+	for _, entry := range grype.Matches {
+		for _, artifact := range entry.Artifact.Locations {
+			if val, ok := findings[artifact.LayerID]; !ok {
+				findings[artifact.LayerID] = SBOMFindings{
+					NumCritical: 0,
+					NumHigh:     0,
+					NumMedium:   0,
+					NumLow:      0,
+					NumInfo:     0,
+				}
+				switch entry.Vulnerability.Severity {
+				case "CRITICAL":
+					val.NumCritical++
+				case "HIGH":
+					val.NumHigh++
+				case "MEDIUM":
+					val.NumMedium++
+				case "LOW":
+					val.NumLow++
+				case "INFO":
+					val.NumInfo++
+				}
+
+				findings[artifact.LayerID] = val
+			} else {
+				switch entry.Vulnerability.Severity {
+				case "CRITICAL":
+					val.NumCritical++
+				case "HIGH":
+					val.NumHigh++
+				case "MEDIUM":
+					val.NumMedium++
+				case "LOW":
+					val.NumLow++
+				case "INFO":
+					val.NumInfo++
+
+				}
+
+				findings[artifact.LayerID] = val
+			}
+		}
+
+	}
+
+	return &findings
+}
+
+type SBOMFindings struct {
+	NumCritical int
+	NumHigh     int
+	NumMedium   int
+	NumLow      int
+	NumInfo     int
 }

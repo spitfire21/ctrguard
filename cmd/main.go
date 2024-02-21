@@ -226,13 +226,12 @@ func checkRunningProcesses(processes []ps.Process) {
 			if val, ok := approvedImage[image]; ok && val == "Approved" {
 				continue
 			}
-			println(image)
 			if imageDecision(image) {
 				fmt.Println("ERROR: running container without a valid scan")
 				KillProcess(toOSProcess(process))
 				err := sendMessageToProcess(process, "ERROR: running container without a valid scan")
 				if err != nil {
-					fmt.Println(err)
+					log.Errorf("Error sending message to process: %s", err)
 				}
 
 			} else {
@@ -252,7 +251,6 @@ func imageHash(image string) string {
 func imageDecision(image string) bool {
 	if image == "alpine" {
 		return false
-
 	}
 	return true
 }
@@ -316,36 +314,6 @@ func FindProcess(pid int) (*os.Process, error) {
 	return proc, err
 }
 
-func VerifyLayers(sbom *SBOM) SBOMFindings {
-
-	return SBOMFindings{}
-}
-
-func VerifyScanPolicy(findings *SBOMFindings, policy *ScanPolicy) bool {
-	if findings.NumHigh < policy.NumHigh {
-		return false
-	}
-	if findings.NumMedium < policy.NumMedium {
-		return false
-	}
-	if findings.NumLow < policy.NumLow {
-		return false
-	}
-	if findings.NumInfo < policy.NumInfo {
-		return false
-	}
-	return true
-
-}
-
-func loadSBOM() SBOM {
-	return SBOM{}
-}
-
-func loadScanPolicy() ScanPolicy {
-	return ScanPolicy{}
-}
-
 func KillProcess(proc *os.Process) (*os.Process, error) {
 	err := proc.Signal(syscall.SIGKILL)
 	return proc, err
@@ -382,24 +350,4 @@ type Package struct {
 	License     []string
 	Files       []string
 	CPEs        []string
-}
-
-type SBOMFindings struct {
-	NumHigh   int
-	NumMedium int
-	NumLow    int
-	NumInfo   int
-}
-
-type SBOM struct {
-}
-
-type ScanPolicy struct {
-	PolicyName    string
-	Enabled       bool
-	NonScanLayers int
-	NumHigh       int
-	NumMedium     int
-	NumLow        int
-	NumInfo       int
 }
