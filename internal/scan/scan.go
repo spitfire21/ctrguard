@@ -435,6 +435,24 @@ func BuildSBOMFindingsPerID(grype *GrypeFormat) *map[string]SBOMFindings {
 	return &findings
 }
 
+func MergeLayerFindings(findingsOne, findingsTwo map[string]SBOMFindings) error {
+	for k, v := range findingsTwo {
+		if val, ok := findingsOne[k]; !ok {
+			findingsOne[k] = v
+			continue
+		} else {
+			val.NumCritical += v.NumCritical
+			val.NumHigh += v.NumHigh
+			val.NumMedium += v.NumMedium
+			val.NumLow += v.NumLow
+			val.NumInfo += v.NumInfo
+			findingsOne[k] = val
+		}
+
+	}
+	return nil
+}
+
 type VulnerabilitySBOM struct {
 	Locations *Set
 	Artifacts *Set

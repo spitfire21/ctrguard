@@ -13,7 +13,10 @@ import (
 	//	"github.com/docker/docker/client"
 	"github.com/google/martian/log"
 	"github.com/mitchellh/go-ps"
+	scan "github.com/spitfire21/ctrguard/m/internal/scan"
 )
+
+var findings map[string]scan.SBOMFindings
 
 // Lazy way for me to iterate through docker options
 // 0 means no command follows
@@ -164,13 +167,16 @@ func sendMessageToProcess(proc ps.Process, message string) error {
 	// limits OS to linux; need to build an interface for windows
 	// Writing to file descriptor for the process sends a message to the process
 	f, err := os.OpenFile(fmt.Sprintf("/proc/%d/fd/0", proc.Pid()), os.O_WRONLY, 0)
+	if err != nil {
+		log.Errorf("error opening file descriptor for process to infrom user of termination: %s", err)
+	}
 	defer f.Close()
 
 	if err != nil {
-		return errors.New("Could not open file descriptor for process to infrom user of termination")
+		return errors.New("could not open file descriptor for process to infrom user of termination")
 	}
 	if _, err := f.WriteString(message + "\n"); err != nil {
-		return errors.New("Could not write to file descriptor for process to infrom user of termination")
+		return errors.New("could not write to file descriptor for process to infrom user of termination")
 	}
 
 	return nil
@@ -179,7 +185,7 @@ func sendMessageToProcess(proc ps.Process, message string) error {
 // findRunningImage finds the running image based on the argument string.
 //
 // It takes a string parameter and returns a string.
-func findRunningImage(argument string) string {
+func findRunningImage(argument string) (string, string) {
 	words := strings.Split(argument, " ")
 	var image_loc int
 	option_set := 0
@@ -203,11 +209,15 @@ func findRunningImage(argument string) string {
 			image_loc++
 		}
 		if image_loc == 3 {
-			return word
+			s := strings.Split(word, ":")
+			if len(s) == 2 {
+				return s[0], s[1]
+			}
+			return s[0], ""
 		}
 
 	}
-	return ""
+	return "", ""
 
 }
 
@@ -222,11 +232,11 @@ func checkRunningProcesses(processes []ps.Process) {
 		}
 		//println(process.Executable(), arguments)
 		if strings.Contains(arguments, "docker run") {
-			image := findRunningImage(arguments)
+			image, version := findRunningImage(arguments)
 			if val, ok := approvedImage[image]; ok && val == "Approved" {
 				continue
 			}
-			if imageDecision(image) {
+			if imageDecision(image, version) {
 				fmt.Println("ERROR: running container without a valid scan")
 				KillProcess(toOSProcess(process))
 				err := sendMessageToProcess(process, "ERROR: running container without a valid scan")
@@ -244,12 +254,35 @@ func checkRunningProcesses(processes []ps.Process) {
 	}
 }
 
+func loadScans() {
+	files, err := os.ReadDir("../examples")
+
+	if err != nil {
+		log.Errorf("%v", err)
+	}
+	for file := range files {
+		grype := scan.UnmarshalScan("../examples/" + files[file].Name())
+		lfindings := scan.BuildSBOMFindingsPerID(&grype)
+		//Need to merge sbom findings
+		err = scan.MergeLayerFindings(findings, *lfindings)
+		if err != nil {
+			log.Errorf("%v", err)
+		}
+	}
+}
+
 func imageHash(image string) string {
 	return ""
 }
 
-func imageDecision(image string) bool {
-	if image == "alpine" {
+type Names struct {
+	Version  string
+	LayerIDs []string
+}
+
+func imageDecision(image, version string) bool {
+	images := map[string]Names{}
+	if _, ok := images[image]; ok {
 		return false
 	}
 	return true
