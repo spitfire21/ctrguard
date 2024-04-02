@@ -1,0 +1,147 @@
+{
+ "matches": [],
+ "source": {
+  "type": "image",
+  "target": {
+   "userInput": "anchore/grype",
+   "imageID": "sha256:4e7a616bf769b34485d6d249c773380aa8381066122a22f0ce56f024c75e6a4b",
+   "manifestDigest": "sha256:7b9bea9587c7730015760e161335139842510a521579e7c97bec2208c578bd42",
+   "mediaType": "application/vnd.docker.distribution.manifest.v2+json",
+   "tags": [
+    "anchore/grype:latest"
+   ],
+   "imageSize": 51846777,
+   "layers": [
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:a2a7397997fb4bd77688eb1b7ef861ad8e08399a88005a0128ec7754793c5342",
+     "size": 200313
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:14606b2e909c3ecece959fdad84b05861d4e5afd64bec1eca9e72a8eb508e3af",
+     "size": 0
+    },
+    {
+     "mediaType": "application/vnd.docker.image.rootfs.diff.tar.gzip",
+     "digest": "sha256:49cb10162810c405fe73bb6edd230ba1a08ba1b6ff8377bf34250502cf6d31e5",
+     "size": 51646464
+    }
+   ],
+   "manifest": "eyJzY2hlbWFWZXJzaW9uIjoyLCJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmRpc3RyaWJ1dGlvbi5tYW5pZmVzdC52Mitqc29uIiwiY29uZmlnIjp7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuY29udGFpbmVyLmltYWdlLnYxK2pzb24iLCJzaXplIjo0Mzk4LCJkaWdlc3QiOiJzaGEyNTY6NGU3YTYxNmJmNzY5YjM0NDg1ZDZkMjQ5Yzc3MzM4MGFhODM4MTA2NjEyMmEyMmYwY2U1NmYwMjRjNzVlNmE0YiJ9LCJsYXllcnMiOlt7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjoyMDM3NzYsImRpZ2VzdCI6InNoYTI1NjphMmE3Mzk3OTk3ZmI0YmQ3NzY4OGViMWI3ZWY4NjFhZDhlMDgzOTlhODgwMDVhMDEyOGVjNzc1NDc5M2M1MzQyIn0seyJtZWRpYVR5cGUiOiJhcHBsaWNhdGlvbi92bmQuZG9ja2VyLmltYWdlLnJvb3Rmcy5kaWZmLnRhci5nemlwIiwic2l6ZSI6MTUzNiwiZGlnZXN0Ijoic2hhMjU2OjE0NjA2YjJlOTA5YzNlY2VjZTk1OWZkYWQ4NGIwNTg2MWQ0ZTVhZmQ2NGJlYzFlY2E5ZTcyYThlYjUwOGUzYWYifSx7Im1lZGlhVHlwZSI6ImFwcGxpY2F0aW9uL3ZuZC5kb2NrZXIuaW1hZ2Uucm9vdGZzLmRpZmYudGFyLmd6aXAiLCJzaXplIjo1MTY0ODAwMCwiZGlnZXN0Ijoic2hhMjU2OjQ5Y2IxMDE2MjgxMGM0MDVmZTczYmI2ZWRkMjMwYmExYTA4YmExYjZmZjgzNzdiZjM0MjUwNTAyY2Y2ZDMxZTUifV19",
+   "config": "eyJhcmNoaXRlY3R1cmUiOiJhbWQ2NCIsImNvbmZpZyI6eyJFbnYiOlsiUEFUSD0vdXNyL2xvY2FsL3NiaW46L3Vzci9sb2NhbC9iaW46L3Vzci9zYmluOi91c3IvYmluOi9zYmluOi9iaW4iXSwiRW50cnlwb2ludCI6WyIvZ3J5cGUiXSwiV29ya2luZ0RpciI6Ii90bXAiLCJMYWJlbHMiOnsiaW8uYXJ0aWZhY3RodWIucGFja2FnZS5saWNlbnNlIjoiQXBhY2hlLTIuMCIsImlvLmFydGlmYWN0aHViLnBhY2thZ2UubG9nby11cmwiOiJodHRwczovL3VzZXItaW1hZ2VzLmdpdGh1YnVzZXJjb250ZW50LmNvbS81MTk5Mjg5LzEzNjg1NTM5My1kMGE5ZWVmOS1jY2YxLTRlMmItOWQ3Yy03YWFkMTZhNTY3ZTUucG5nIiwiaW8uYXJ0aWZhY3RodWIucGFja2FnZS5yZWFkbWUtdXJsIjoiaHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2FuY2hvcmUvZ3J5cGUvbWFpbi9SRUFETUUubWQiLCJvcmcub3BlbmNvbnRhaW5lcnMuaW1hZ2UuY3JlYXRlZCI6IjIwMjQtMDItMDdUMjE6MzQ6NDdaIiwib3JnLm9wZW5jb250YWluZXJzLmltYWdlLmRlc2NyaXB0aW9uIjoiQSB2dWxuZXJhYmlsaXR5IHNjYW5uZXIgZm9yIGNvbnRhaW5lciBpbWFnZXMgYW5kIGZpbGVzeXN0ZW1zIiwib3JnLm9wZW5jb250YWluZXJzLmltYWdlLmxpY2Vuc2VzIjoiQXBhY2hlLTIuMCIsIm9yZy5vcGVuY29udGFpbmVycy5pbWFnZS5yZXZpc2lvbiI6Ijc0NzgwOTAyZWRhMDkwYWZhNWNhMzY2OTlkYTI0NTNmMmRmMmU2NTUiLCJvcmcub3BlbmNvbnRhaW5lcnMuaW1hZ2Uuc291cmNlIjoiaHR0cHM6Ly9naXRodWIuY29tL2FuY2hvcmUvZ3J5cGUiLCJvcmcub3BlbmNvbnRhaW5lcnMuaW1hZ2UudGl0bGUiOiJncnlwZSIsIm9yZy5vcGVuY29udGFpbmVycy5pbWFnZS52ZW5kb3IiOiJBbmNob3JlLCBJbmMuIiwib3JnLm9wZW5jb250YWluZXJzLmltYWdlLnZlcnNpb24iOiIwLjc0LjUifSwiT25CdWlsZCI6bnVsbH0sImNyZWF0ZWQiOiIyMDI0LTAyLTA3VDIxOjQxOjI2LjgzNDI4NDM0MVoiLCJoaXN0b3J5IjpbeyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi41NzY0MTQwNDdaIiwiY3JlYXRlZF9ieSI6IkNPUFkgL2V0Yy9zc2wvY2VydHMvY2EtY2VydGlmaWNhdGVzLmNydCAvZXRjL3NzbC9jZXJ0cy9jYS1jZXJ0aWZpY2F0ZXMuY3J0ICMgYnVpbGRraXQiLCJjb21tZW50IjoiYnVpbGRraXQuZG9ja2VyZmlsZS52MCJ9LHsiY3JlYXRlZCI6IjIwMjQtMDItMDdUMjE6NDE6MjYuNjAwMjgxODYzWiIsImNyZWF0ZWRfYnkiOiJXT1JLRElSIC90bXAiLCJjb21tZW50IjoiYnVpbGRraXQuZG9ja2VyZmlsZS52MCJ9LHsiY3JlYXRlZCI6IjIwMjQtMDItMDdUMjE6NDE6MjYuODM0Mjg0MzQxWiIsImNyZWF0ZWRfYnkiOiJDT1BZIGdyeXBlIC8gIyBidWlsZGtpdCIsImNvbW1lbnQiOiJidWlsZGtpdC5kb2NrZXJmaWxlLnYwIn0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkFSRyBCVUlMRF9EQVRFIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkFSRyBCVUlMRF9WRVJTSU9OIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkFSRyBWQ1NfUkVGIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkFSRyBWQ1NfVVJMIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkxBQkVMIG9yZy5vcGVuY29udGFpbmVycy5pbWFnZS5jcmVhdGVkPTIwMjQtMDItMDdUMjE6MzQ6NDdaIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkxBQkVMIG9yZy5vcGVuY29udGFpbmVycy5pbWFnZS50aXRsZT1ncnlwZSIsImNvbW1lbnQiOiJidWlsZGtpdC5kb2NrZXJmaWxlLnYwIiwiZW1wdHlfbGF5ZXIiOnRydWV9LHsiY3JlYXRlZCI6IjIwMjQtMDItMDdUMjE6NDE6MjYuODM0Mjg0MzQxWiIsImNyZWF0ZWRfYnkiOiJMQUJFTCBvcmcub3BlbmNvbnRhaW5lcnMuaW1hZ2UuZGVzY3JpcHRpb249QSB2dWxuZXJhYmlsaXR5IHNjYW5uZXIgZm9yIGNvbnRhaW5lciBpbWFnZXMgYW5kIGZpbGVzeXN0ZW1zIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkxBQkVMIG9yZy5vcGVuY29udGFpbmVycy5pbWFnZS5zb3VyY2U9aHR0cHM6Ly9naXRodWIuY29tL2FuY2hvcmUvZ3J5cGUiLCJjb21tZW50IjoiYnVpbGRraXQuZG9ja2VyZmlsZS52MCIsImVtcHR5X2xheWVyIjp0cnVlfSx7ImNyZWF0ZWQiOiIyMDI0LTAyLTA3VDIxOjQxOjI2LjgzNDI4NDM0MVoiLCJjcmVhdGVkX2J5IjoiTEFCRUwgb3JnLm9wZW5jb250YWluZXJzLmltYWdlLnJldmlzaW9uPTc0NzgwOTAyZWRhMDkwYWZhNWNhMzY2OTlkYTI0NTNmMmRmMmU2NTUiLCJjb21tZW50IjoiYnVpbGRraXQuZG9ja2VyZmlsZS52MCIsImVtcHR5X2xheWVyIjp0cnVlfSx7ImNyZWF0ZWQiOiIyMDI0LTAyLTA3VDIxOjQxOjI2LjgzNDI4NDM0MVoiLCJjcmVhdGVkX2J5IjoiTEFCRUwgb3JnLm9wZW5jb250YWluZXJzLmltYWdlLnZlbmRvcj1BbmNob3JlLCBJbmMuIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkxBQkVMIG9yZy5vcGVuY29udGFpbmVycy5pbWFnZS52ZXJzaW9uPTAuNzQuNSIsImNvbW1lbnQiOiJidWlsZGtpdC5kb2NrZXJmaWxlLnYwIiwiZW1wdHlfbGF5ZXIiOnRydWV9LHsiY3JlYXRlZCI6IjIwMjQtMDItMDdUMjE6NDE6MjYuODM0Mjg0MzQxWiIsImNyZWF0ZWRfYnkiOiJMQUJFTCBvcmcub3BlbmNvbnRhaW5lcnMuaW1hZ2UubGljZW5zZXM9QXBhY2hlLTIuMCIsImNvbW1lbnQiOiJidWlsZGtpdC5kb2NrZXJmaWxlLnYwIiwiZW1wdHlfbGF5ZXIiOnRydWV9LHsiY3JlYXRlZCI6IjIwMjQtMDItMDdUMjE6NDE6MjYuODM0Mjg0MzQxWiIsImNyZWF0ZWRfYnkiOiJMQUJFTCBpby5hcnRpZmFjdGh1Yi5wYWNrYWdlLnJlYWRtZS11cmw9aHR0cHM6Ly9yYXcuZ2l0aHVidXNlcmNvbnRlbnQuY29tL2FuY2hvcmUvZ3J5cGUvbWFpbi9SRUFETUUubWQiLCJjb21tZW50IjoiYnVpbGRraXQuZG9ja2VyZmlsZS52MCIsImVtcHR5X2xheWVyIjp0cnVlfSx7ImNyZWF0ZWQiOiIyMDI0LTAyLTA3VDIxOjQxOjI2LjgzNDI4NDM0MVoiLCJjcmVhdGVkX2J5IjoiTEFCRUwgaW8uYXJ0aWZhY3RodWIucGFja2FnZS5sb2dvLXVybD1odHRwczovL3VzZXItaW1hZ2VzLmdpdGh1YnVzZXJjb250ZW50LmNvbS81MTk5Mjg5LzEzNjg1NTM5My1kMGE5ZWVmOS1jY2YxLTRlMmItOWQ3Yy03YWFkMTZhNTY3ZTUucG5nIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkxBQkVMIGlvLmFydGlmYWN0aHViLnBhY2thZ2UubGljZW5zZT1BcGFjaGUtMi4wIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX0seyJjcmVhdGVkIjoiMjAyNC0wMi0wN1QyMTo0MToyNi44MzQyODQzNDFaIiwiY3JlYXRlZF9ieSI6IkVOVFJZUE9JTlQgW1wiL2dyeXBlXCJdIiwiY29tbWVudCI6ImJ1aWxka2l0LmRvY2tlcmZpbGUudjAiLCJlbXB0eV9sYXllciI6dHJ1ZX1dLCJvcyI6ImxpbnV4Iiwicm9vdGZzIjp7InR5cGUiOiJsYXllcnMiLCJkaWZmX2lkcyI6WyJzaGEyNTY6YTJhNzM5Nzk5N2ZiNGJkNzc2ODhlYjFiN2VmODYxYWQ4ZTA4Mzk5YTg4MDA1YTAxMjhlYzc3NTQ3OTNjNTM0MiIsInNoYTI1NjoxNDYwNmIyZTkwOWMzZWNlY2U5NTlmZGFkODRiMDU4NjFkNGU1YWZkNjRiZWMxZWNhOWU3MmE4ZWI1MDhlM2FmIiwic2hhMjU2OjQ5Y2IxMDE2MjgxMGM0MDVmZTczYmI2ZWRkMjMwYmExYTA4YmExYjZmZjgzNzdiZjM0MjUwNTAyY2Y2ZDMxZTUiXX19",
+   "repoDigests": [
+    "anchore/grype@sha256:16d0d0187d7681a8274dc14a23b2cd297e86347d0658731c164130ffb488ffea"
+   ],
+   "architecture": "amd64",
+   "os": "linux",
+   "labels": {
+    "io.artifacthub.package.license": "Apache-2.0",
+    "io.artifacthub.package.logo-url": "https://user-images.githubusercontent.com/5199289/136855393-d0a9eef9-ccf1-4e2b-9d7c-7aad16a567e5.png",
+    "io.artifacthub.package.readme-url": "https://raw.githubusercontent.com/anchore/grype/main/README.md",
+    "org.opencontainers.image.created": "2024-02-07T21:34:47Z",
+    "org.opencontainers.image.description": "A vulnerability scanner for container images and filesystems",
+    "org.opencontainers.image.licenses": "Apache-2.0",
+    "org.opencontainers.image.revision": "74780902eda090afa5ca36699da2453f2df2e655",
+    "org.opencontainers.image.source": "https://github.com/anchore/grype",
+    "org.opencontainers.image.title": "grype",
+    "org.opencontainers.image.vendor": "Anchore, Inc.",
+    "org.opencontainers.image.version": "0.74.5"
+   }
+  }
+ },
+ "distro": {
+  "name": "",
+  "version": "",
+  "idLike": null
+ },
+ "descriptor": {
+  "name": "grype",
+  "version": "0.74.5",
+  "configuration": {
+   "output": [
+    "json"
+   ],
+   "file": "",
+   "distro": "",
+   "add-cpes-if-none": false,
+   "output-template-file": "",
+   "check-for-app-update": true,
+   "only-fixed": false,
+   "only-notfixed": false,
+   "ignore-wontfix": "",
+   "platform": "",
+   "search": {
+    "scope": "squashed",
+    "unindexed-archives": false,
+    "indexed-archives": true
+   },
+   "ignore": null,
+   "exclude": [],
+   "db": {
+    "cache-dir": "/root/.cache/grype/db",
+    "update-url": "https://toolbox-data.anchore.io/grype/databases/listing.json",
+    "ca-cert": "",
+    "auto-update": true,
+    "validate-by-hash-on-start": false,
+    "validate-age": true,
+    "max-allowed-built-age": 432000000000000
+   },
+   "externalSources": {
+    "enable": false,
+    "maven": {
+     "searchUpstreamBySha1": true,
+     "baseUrl": "https://search.maven.org/solrsearch/select"
+    }
+   },
+   "match": {
+    "java": {
+     "using-cpes": false
+    },
+    "dotnet": {
+     "using-cpes": false
+    },
+    "golang": {
+     "using-cpes": false,
+     "always-use-cpe-for-stdlib": true
+    },
+    "javascript": {
+     "using-cpes": false
+    },
+    "python": {
+     "using-cpes": false
+    },
+    "ruby": {
+     "using-cpes": false
+    },
+    "rust": {
+     "using-cpes": false
+    },
+    "stock": {
+     "using-cpes": true
+    }
+   },
+   "fail-on-severity": "",
+   "registry": {
+    "insecure-skip-tls-verify": false,
+    "insecure-use-http": false,
+    "auth": null,
+    "ca-cert": ""
+   },
+   "show-suppressed": false,
+   "by-cve": false,
+   "name": "",
+   "default-image-pull-source": "",
+   "vex-documents": [],
+   "vex-add": []
+  },
+  "db": {
+   "built": "2024-02-10T01:21:52Z",
+   "schemaVersion": 5,
+   "location": "/root/.cache/grype/db/5",
+   "checksum": "sha256:8afc83bec5b73d91c7eaa82234138a51f94941fdcadc88c9dd8676ab35f0fbfa",
+   "error": null
+  },
+  "timestamp": "2024-02-09T21:53:36.173805878-07:00"
+ }
+}
